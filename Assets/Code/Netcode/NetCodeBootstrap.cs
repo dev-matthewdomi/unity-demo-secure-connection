@@ -28,7 +28,7 @@ namespace Code.Netcode
         public static readonly bool UseComponentsToConnect;
         
         // Modify this to test out the different connection flows
-        private const TestConfiguration TestConfig = TestConfiguration.ManualConnectionDirect;
+        private const TestConfiguration TestConfig = TestConfiguration.ManualConnectionComponents;
         private const bool UseSecureDriver = true;
 
         static NetCodeBootstrap()

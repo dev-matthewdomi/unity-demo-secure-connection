@@ -24,11 +24,11 @@ namespace Code.ManualConnection
             var connectEvent = SystemAPI.GetSingleton<ConnectToServer>();
             if (NetCodeBootstrap.UseComponentsToConnect)
             {
-                Entity driverEntity = SystemAPI.GetSingletonEntity<NetworkStreamDriver>();
+                Entity connectionEntity = state.EntityManager.CreateEntity();
                 if (state.WorldUnmanaged.IsServer())
                 {
                     Debug.Log("ListenWithComponent");
-                    state.EntityManager.AddComponentData(driverEntity, new NetworkStreamRequestListen
+                    state.EntityManager.AddComponentData(connectionEntity, new NetworkStreamRequestListen
                     {
                         Endpoint = connectEvent.Endpoint
                     });
@@ -36,7 +36,7 @@ namespace Code.ManualConnection
                 else
                 {
                     Debug.Log("ConnectWithComponent");
-                    state.EntityManager.AddComponentData(driverEntity, new NetworkStreamRequestConnect
+                    state.EntityManager.AddComponentData(connectionEntity, new NetworkStreamRequestConnect
                     {
                         Endpoint = connectEvent.Endpoint
                     });
